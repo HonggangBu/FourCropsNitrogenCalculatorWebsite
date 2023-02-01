@@ -1,0 +1,147 @@
+.largeBoldFont {
+    font-size: large;
+    font-weight: bold;
+}
+
+#footer {
+    position: fixed;
+    padding: 10px 10px 0px 10px;
+    bottom: 0;
+    width: 100%;
+    /* Height of the footer*/
+    height: 40px;
+    background: grey;
+    text-align: center;
+}
+
+#footer-span {
+    color: rgb(247, 241, 241);
+}
+
+.centerDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.tabTextColor {
+    color: #220fec;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.imageCenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.aboutTitles {
+    color: white;
+    background-color: rgb(139, 65, 4);
+    text-align: center;
+}
+
+.cardBackground {
+    background-color: lightyellow;
+}
+
+.headerStyle {
+    text-align: center;
+    background-color: gainsboro;
+}
+
+.imageLeft {
+    float: left;
+    width: 180px;
+    margin-right: 10px;
+}
+
+.imageRight {
+    float: right;
+    width: 180px;
+    margin-left: 10px;
+}
+
+hr {
+    height: 2px;
+    border-width: 0;
+    color: gray;
+    background-color: gray;
+}
+
+legend {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    width: auto;
+    font-size: medium;
+
+}
+
+fieldset {
+    border-style: solid;
+    border-color: rgb(7, 79, 146);
+    border-width: thin;
+    background-color: cornsilk;
+}
+
+
+/* Style the tab */
+.tab {
+    float: left;
+    /* border: 1px solid #ccc; */
+    margin-right: 20px;
+    background-color: #f1f1f1;
+    /* width: 20%; */
+    height: 200px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 6px 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: inline-start;
+    padding: 5px 20px;
+    /* border: 1px solid #ccc; */
+    /* width: 80%; */
+    border-left: 15em;
+    height: 300px;
+}
+
+.doc-href {
+    font-weight: bold;
+    color: darkblue;
+    padding: 10px;
+    font-family: cursive;
+    font-size: large;
+}

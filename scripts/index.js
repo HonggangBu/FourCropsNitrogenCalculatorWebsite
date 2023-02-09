@@ -173,9 +173,10 @@ function GetBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectCo
 // get modified new base value from a data table
 function GetNewBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectControlId, difference) {
     let v = GetBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectControlId);
-    if (v > 0) {
+    /* if (v > 0) {
         v += difference;
-    }
+    } */
+    v += difference;
     return v;
 }
 
@@ -565,7 +566,7 @@ function GetWheatBaseValue(userSelection) {
             v = GetNewBaseValue(wheatEastMediumConventionaltill, "wheatPriceSelect", "wheatNitrogenPriceSelect", minNotillDiff);
             break;
         case "east_medium_longNoTill":
-            v = GetBaseValue(wheatEastMediumLongnotill, "wheatPriceSelect", "wheatNitrogenPriceSelect");
+            v = GetNewBaseValue(wheatEastMediumConventionaltill, "wheatPriceSelect", "wheatNitrogenPriceSelect", eastWestLongNotillDiff);
             break;
         case "west_medium_convTill":
             v = GetBaseValue(wheatWestMediumConventionaltill, "wheatPriceSelect", "wheatNitrogenPriceSelect");

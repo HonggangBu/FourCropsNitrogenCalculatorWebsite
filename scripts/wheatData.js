@@ -1,5 +1,4 @@
 // Total 9 basic before-credit nitrogen recommendation tables for conventional tillage are provided
-// Note that One more special base table is for "wheat eastern ND Medium productivity long-term no-till"
 // the 9 tables are the results of the combination of productivity (3 types) and region (3 regions)
 // Each minimal no-till recommendation equals corresponding conventional till recommendation plus 20 lbs/acre
 // Eastern or western ND long-term no-till recommendation equals corresponding eastern or western ND conventional till recommendation minus 50 lbs/acre
@@ -78,24 +77,6 @@ var wheatEastMediumConventionaltill = [
     [188, 182, 176, 170, 164, 158, 152, 146, 140, 135, 128, 122, 118, 118, 118, 106, 99, 93, 86],
     [188, 182, 177, 171, 166, 160, 154, 149, 143, 138, 132, 126, 121, 118, 118, 118, 106, 100, 94]
 ];
-
-// wheat eastern ND Medium productivity long-term no-till
-var wheatEastMediumLongnotill = [
-    [190, 189, 188, 181, 170, 156, 140, 119, 80, 50, 30, 10, 0, 0, 0, 0, 0, 0, 0],
-    [190, 189, 188, 182, 172, 159, 146, 136, 123, 104, 81, 50, 20, 0, 0, 0, 0, 0, 0],
-    [190, 189, 188, 182, 172, 161, 152, 143, 133, 123, 111, 98, 82, 60, 30, 10, 0, 0, 0],
-    [190, 189, 188, 182, 175, 169, 162, 155, 148, 140, 132, 123, 114, 105, 94, 82, 69, 53, 33],
-    [190, 189, 188, 182, 175, 170, 163, 156, 149, 141, 133, 124, 116, 109, 101, 92, 83, 73, 60],
-    [190, 189, 188, 182, 175, 170, 164, 157, 150, 142, 136, 130, 124, 118, 112, 105, 98, 91, 83],
-    [190, 189, 188, 182, 175, 170, 165, 158, 150, 145, 140, 135, 130, 124, 119, 113, 108, 102, 96],
-    [190, 189, 188, 182, 175, 173, 166, 159, 151, 147, 143, 138, 134, 129, 124, 120, 115, 110, 105],
-    [190, 189, 188, 182, 175, 173, 167, 160, 153, 149, 145, 141, 137, 133, 129, 125, 120, 116, 112],
-    [190, 189, 188, 182, 175, 173, 168, 163, 156, 152, 149, 145, 142, 139, 135, 132, 128, 125, 121],
-    [190, 189, 188, 182, 175, 173, 168, 164, 157, 154, 150, 147, 144, 141, 138, 135, 131, 128, 125],
-    [190, 189, 188, 182, 175, 173, 168, 164, 158, 155, 151, 148, 146, 143, 140, 137, 134, 131, 128],
-    [190, 189, 188, 182, 175, 173, 168, 164, 158, 155, 152, 149, 147, 144, 141, 138, 136, 133, 130]
-];
-
 
 // wheat Langdon medium productivity conventional till
 var wheatLangdonMediumConventionaltill = [

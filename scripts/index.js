@@ -3,7 +3,9 @@
 $(function () {
     "use strict";
 
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip({
+        placement: 'top'
+    });
 
     // main navigation buttons click/switch
     SwitchActiveLink();

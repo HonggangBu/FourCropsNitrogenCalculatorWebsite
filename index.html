@@ -24,11 +24,13 @@
     <script src="scripts/barleyData.js"></script>
 </head>
 
-<body style="background-color: rgb(246, 245, 250);">
-
+<body>
+    <div class="center" id="title">
+        <h4>North Dakota Crop Nitrogen Recommendation Calculators</h4>
+    </div>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <a class="navbar-brand" href="index.html">
-            <img src="images/icon120.png" alt="Logo" style="width:30px;" class="d-inline-block align-text-top">
+            <img src="images/icon120.png" alt="Logo" class="d-inline-block align-text-top iconwidth">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -58,33 +60,34 @@
         </div>
     </nav>
     <br>
-
     <div class="container">
         <div id="about">
-            <div class="center" style="text-align: center;">
-                <h4>North Dakota Crop Nitrogen Recommendation Calculators</h4>
-            </div>
             <div class="tab">
-                <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen"><b>INTRODUCTION</b></button>
-                <button class="tablinks" onclick="openTab(event, 'tab2')"><b>DOCUMENTS</b></button>
-                <button class="tablinks" onclick="openTab(event, 'tab3')"><b>CONTACT</b></button>
+                <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen">
+                    <b>ABOUT</b>
+                </button>
+                <button class="tablinks" onclick="openTab(event, 'tab2')">
+                    <b>DOCUMENTS</b>
+                </button>
+                <button class="tablinks" onclick="openTab(event, 'tab3')">
+                    <b>CONTACT</b>
+                </button>
             </div>
-
             <div id="tab1" class="tabcontent">
                 <div class="card cardBackground">
                     <div class="aboutTitles">
-                        <h5>INTRODUCTION</h5>
+                        <h4>ABOUT</h4>
                     </div>
                     </br>
-                    <div style="padding: 5px;">
+                    <div class="introDivPadding">
                         <img src="images/sunflower.jpg" alt="sunflower" class="imageLeft">
                         <p>
                             This application provides four NDSU crop nitrogen recommendation calculators for
                             use in North Dakota sunflower, corn, hard red spring wheat/durum, and 2-row malting
                             barley,
                             respectively.
-                            <br /><br />
-
+                            <br />
+                            <br />
                             These calculators are designed only for use by growers and crop consultants working
                             within in North Dakota.
                             <img src="images/corn.jpg" alt="corn" class="imageRight">
@@ -94,11 +97,13 @@
                             recommendations;
                             however, consideration of local Province or State recommendations should also be
                             given.
-                            <br /><br />
+                            <br />
+                            <br />
                             The research N-rate data-base underlying these calculators is from the many-years of
                             field research conducted by Dr. David Franzen,
                             Soil Extension Specialist at North Dakota State University, and others.
-                            <br /><br />
+                            <br />
+                            <br />
                             <img src="images/wheat.jpg" alt="wheat" class="imageLeft">
                             Nitrogen recommendation calculations are based on an economic production function
                             that takes into account the yield response of the crop to added N, less the cost of
@@ -108,8 +113,8 @@
                             More details about this "Maximum Return to Nitrogen" recommendation system can be
                             found <a href="images/MaxReturn.pdf" target="_blank">here</a> or in the section of
                             "Documents".
-                            <br /><br />
-
+                            <br />
+                            <br />
                             The recommendation provided also includes a "plus-minus" value. Although many
                             experiments were used to develop these recommendations,
                             there is no way for us to know the N supplying capability for the soils in each
@@ -119,16 +124,13 @@
                             recommendations with their knowledge of specific field characteristics.
                             This is especially important in wheat, where variety choice influences protein and
                             the need for more or less N.
-
                             Also, choice of N application method and decision to use effective urease or
                             nitrification inhibitors may modify N rate.
                         </p>
                         <hr>
-                        </br></br>
                     </div>
                 </div>
             </div>
-
             <div id="tab2" class="tabcontent">
                 <div class="card cardBackground">
                     <div class="aboutTitles">
@@ -136,22 +138,41 @@
                     </div>
                     </br>
                     <div>
-                        <ul style="list-style-type:square; color:orange;">
-                            <li><a href="images/sf713-sunflower.pdf" target="_blank" class="doc-href">Fertilizing
-                                    Sunflower</a></li><br>
-                            <li><a href="images/sf722-corn.pdf" target="_blank" class="doc-href">Soil Fertility
-                                    Recommendations for Corn</a></li><br>
-                            <li><a href="images/sf712-wheat_and_durum.pdf" target="_blank" class="doc-href">Fertilizing Hard
-                                    Red Spring Wheat and Durum</a></li><br>
-                            <li><a href="images/sf723-Barley_draft.pdf" target="_blank" class="doc-href">Fertilizing Malting
-                                    and Feed Barley </a></li><br>
-                            <li><a href="images/MaxReturn.pdf" target="_blank" class="doc-href">Regional
-                                    Approach to Making Nitrogen Fertilizer Rate Decisions for Corn</a></li>
+                        <ul class="doclist">
+                            <li>
+                                <a href="https://www.ndsu.edu/agriculture/sites/default/files/2022-08/sf713.pdf"
+                                    target="_blank" class="doc-href">Fertilizing
+                                    Sunflower</a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="https://www.ndsu.edu/agriculture/sites/default/files/2022-12/SF722%20Soil%20Fertility%20Recommendations%20for%20Corn.pdf"
+                                    target="_blank" class="doc-href">Soil Fertility
+                                    Recommendations for Corn</a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="https://www.ndsu.edu/agriculture/sites/default/files/2022-10/sf712.pdf"
+                                    target="_blank" class="doc-href">Fertilizing
+                                    Hard
+                                    Red Spring Wheat and Durum</a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="https://www.ndsu.edu/agriculture/sites/default/files/2023-07/sf723.pdf"
+                                    target="_blank" class="doc-href">Fertilizing
+                                    Malting
+                                    and Feed Barley </a>
+                            </li>
+                            <br>
+                            <li>
+                                <a href="images/MaxReturn.pdf" target="_blank" class="doc-href">Regional
+                                    Approach to Making Nitrogen Fertilizer Rate Decisions for Corn</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div id="tab3" class="tabcontent">
                 <div class="card cardBackground">
                     <div class="aboutTitles">
@@ -164,33 +185,39 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align:center;">
+                        <h4 class="card-title centertext">
                             <a href="https://www.ndsu.edu/agriculture/ag-home/directory/dave-franzen" target="_blank"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Click either the name or the photo to visit Dr. Franzen's NDSU homepage">
                                 <span">David Franzen</span>
                             </a>
                         </h4>
-                        <p style="text-align:center;"><b><em>Professor/Extension Soil Specialist</em></b></p>
-                        <p style="text-align:center; font-weight: bold;">Department of Soil Science, NDSU</p>
-                        <p style="text-align:center;"><u>Email: <b>david.franzen@ndsu.edu</b></u></p>
-                        <p style="text-align:center;"><u>phone: <b>701-799-2565</b></u></p>
+                        <p class="centertext">
+                            <b><em>Professor/Extension Soil Specialist</em></b>
+                        </p>
+                        <p class="centertext boldfont">Department of Soil Science, NDSU</p>
+                        <p class="centertext">
+                            <u>Email: <b>david.franzen@ndsu.edu</b></u>
+                        </p>
+                        <p class="centertext">
+                            <u>phone: <b>701-799-2565</b></u>
+                        </p>
                         <br>
                     </div>
                 </div>
             </div>
-
         </div>
-
-        <div id="sunflower" style="display:none;">
+        <div id="sunflower" class="nodisplay">
             <div class="row">
-                <div class="col-sm-5" style="padding-right:20px;">
+                <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
                         <h5>Sunflower Nitrogen Calculator</h5>
                     </div>
                     <hr>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest sunflower price ($/lb)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest sunflower price ($/lb)</strong></i>
+                        </legend>
                         <div>
                             <select class="form-control" name="sfPriceSelect" id="sfPriceSelect">
                                 <option>0.09</option>
@@ -215,15 +242,17 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest nitrogen cost ($/lb)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest nitrogen cost ($/lb)</strong></i>
+                        </legend>
                         <div>
-                            <select class="form-control" id="sfNitrogenPriceSelect">
-                            </select>
+                            <select class="form-control" id="sfNitrogenPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>percent organic matter in soil (%)</strong></i>
+                        <legend visible="true">
+                            <i><strong>percent organic matter in soil (%)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="sfOrganicMatterInput" value="0">
@@ -231,7 +260,8 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
+                        <legend visible="true">
+                            <i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="sfSoilTestNitrateInput" value="0">
@@ -239,74 +269,90 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>previous crops planted</strong></i>
+                        <legend visible="true">
+                            <i><strong>previous crops planted</strong></i>
                         </legend>
                         <select class="form-control" id="sfPreviousCropSelect">
                             <option value="0">no nitrogen-supplying crop</option>
-                            <option value="40">Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
+                            <option value="40">
+                                Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
                                 Sweet
                                 Clover
                             </option>
                             <option value="0">sugarbeet with yellow leaves at harvest</option>
                             <option value="30">sugarbeet with yellow-green leaves at harvest</option>
                             <option value="80">sugarbeet with dark-green leaves at harvest</option>
-                            <option value="150">harvested alfalfa or unharvested sweet clover (5+ plants per
+                            <option value="150">
+                                harvested alfalfa or unharvested sweet clover (5+ plants per
                                 sqft)
                             </option>
-                            <option value="100">harvested alfalfa or unharvested sweet clover (3-4 plants per
+                            <option value="100">
+                                harvested alfalfa or unharvested sweet clover (3-4 plants per
                                 sqft)
                             </option>
-                            <option value="50">harvested alfalfa or unharvested sweet clover (1-2 plants per
+                            <option value="50">
+                                harvested alfalfa or unharvested sweet clover (1-2 plants per
                                 sqft)
                             </option>
-                            <option value="0">harvested alfalfa or unharvested sweet clover (less than 1 plants
+                            <option value="0">
+                                harvested alfalfa or unharvested sweet clover (less than 1 plants
                                 per
-                                sqft)</option>
+                                sqft)
+                            </option>
                         </select>
                     </fieldset>
                 </div>
-                <div class="col-sm-7" style="padding-left:20px;">
+                <div class="col-sm-7 paddingleft20">
                     <div class="centerDiv">
                         <img src="images/ND_ThreeRegion.png" alt="ND 3-region map" width="75%">
                     </div>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>region in North Dakota</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>region in North Dakota</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="sfRegion" value="west" checked>&nbsp; Western Region
+                                <input type="radio" name="sfRegion" value="west" checked>
+                                &nbsp; Western Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="sfRegion" value="east">&nbsp; Eastern Region
+                                <input type="radio" name="sfRegion" value="east">
+                                &nbsp; Eastern Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="sfRegion" value="langdon">&nbsp; Langdon Region
+                                <input type="radio" name="sfRegion" value="langdon">
+                                &nbsp; Langdon Region
                             </label>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>tillage type</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>tillage type</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="sfTillage" value="convTill" checked>&nbsp;
+                                <input type="radio" name="sfTillage" value="convTill" checked>
+                                &nbsp;
                                 Conventional Tillage
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
-                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank
-                                        does not contribute to conventional till."></span></a>
+                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank does not contribute to conventional till."></span></a>
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="sfTillage" value="minNoTill">&nbsp;
+                                <input type="radio" name="sfTillage" value="minNoTill">
+                                &nbsp;
                                 Minimal No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for less than 5 consecutive years; also called short-term no-till"></span></a>
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="sfTillage" value="longNoTill">&nbsp;
+                                <input type="radio" name="sfTillage" value="longNoTill">
+                                &nbsp;
                                 Long-term No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for greater than 5 consecutive years"></span></a>
@@ -315,20 +361,23 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>sunflower type</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>sunflower type</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="sfType" value="oilseed" checked>&nbsp; oilseed
+                                <input type="radio" name="sfType" value="oilseed" checked>
+                                &nbsp; oilseed
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="sfType" value="confection">&nbsp; confection
+                                <input type="radio" name="sfType" value="confection">
+                                &nbsp; confection
                             </label>
                         </div>
                     </fieldset>
                 </div>
             </div>
-
             <hr>
             <div class="centerDiv">
                 <button type="button" class="btn btn-primary" id="sfCalculateBtn" data-toggle="modal"
@@ -336,7 +385,6 @@
                     <b>CALCULATE</b>
                 </button>
             </div>
-
             <div class="modal fade" id="sfModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -352,9 +400,8 @@
                             </div>
                             <br>
                             <div>
-                                <a href="#sfdemo" class="btn btn-warning" data-toggle="collapse" style="float:right">
-                                    Note About the Result
-                                </a>
+                                <a href="#sfdemo" class="btn btn-warning floatright" data-toggle="collapse">Note About
+                                    the Result</a>
                                 <div id="sfdemo" class="collapse">
                                     <br>
                                     <p>
@@ -389,36 +436,37 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <div id="corn" style="display:none;">
+        <div id="corn" class="nodisplay">
             <div class="row">
-                <div class="col-sm-5" style="padding-right:20px;">
+                <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
                         <h5>Corn Nitrogen Calculator</h5>
                     </div>
                     <hr>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest corn price ($/bushel)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest corn price ($/bushel)</strong></i>
+                        </legend>
                         <div>
-                            <select class="form-control" id="cornPriceSelect">
-                            </select>
+                            <select class="form-control" id="cornPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest nitrogen cost ($/lb)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest nitrogen cost ($/lb)</strong></i>
+                        </legend>
                         <div>
-                            <select class="form-control" id="cornNitrogenPriceSelect">
-                            </select>
+                            <select class="form-control" id="cornNitrogenPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>percent organic matter in soil (%)</strong></i>
+                        <legend visible="true">
+                            <i><strong>percent organic matter in soil (%)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="cornOrganicMatterInput" value="0">
@@ -426,7 +474,8 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
+                        <legend visible="true">
+                            <i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="cornSoilTestNitrateInput"
@@ -435,94 +484,114 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>previous crops planted</strong></i>
+                        <legend visible="true">
+                            <i><strong>previous crops planted</strong></i>
                         </legend>
                         <select class="form-control" id="cornPreviousCropSelect">
                             <option value="0">no nitrogen-supplying crop</option>
-                            <option value="40">Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
+                            <option value="40">
+                                Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
                                 Sweet
                                 Clover
                             </option>
                             <option value="0">sugarbeet with yellow leaves at harvest</option>
                             <option value="30">sugarbeet with yellow-green leaves at harvest</option>
                             <option value="80">sugarbeet with dark-green leaves at harvest</option>
-                            <option value="150">harvested alfalfa or unharvested sweet clover (5+ plants per
+                            <option value="150">
+                                harvested alfalfa or unharvested sweet clover (5+ plants per
                                 sqft)
                             </option>
-                            <option value="100">harvested alfalfa or unharvested sweet clover (3-4 plants per
+                            <option value="100">
+                                harvested alfalfa or unharvested sweet clover (3-4 plants per
                                 sqft)
                             </option>
-                            <option value="50">harvested alfalfa or unharvested sweet clover (1-2 plants per
+                            <option value="50">
+                                harvested alfalfa or unharvested sweet clover (1-2 plants per
                                 sqft)
                             </option>
-                            <option value="0">harvested alfalfa or unharvested sweet clover (less than 1 plants
+                            <option value="0">
+                                harvested alfalfa or unharvested sweet clover (less than 1 plants
                                 per
-                                sqft)</option>
+                                sqft)
+                            </option>
                         </select>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>irrigation</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>irrigation</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="cornIrrigation" value="nonIrrigated" checked>&nbsp;
+                                <input type="radio" name="cornIrrigation" value="nonIrrigated" checked>
+                                &nbsp;
                                 Non-Irrigated
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="cornIrrigation" value="irrigated">&nbsp; Irrigated
+                                <input type="radio" name="cornIrrigation" value="irrigated">
+                                &nbsp; Irrigated
                             </label>
                         </div>
                     </fieldset>
                 </div>
-                <div class="col-sm-7" style="padding-left:20px;" id="nonIrrigationRelatedDiv">
+                <div class="col-sm-7 paddingleft20" id="nonIrrigationRelatedDiv">
                     <div class="centerDiv">
                         <img src="images/ND4.jpg" alt="ND 4-region map" width="75%">
                     </div>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>region in North Dakota</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>region in North Dakota</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="cornRegion" value="westND" checked>&nbsp; Western
+                                <input type="radio" name="cornRegion" value="westND" checked>
+                                &nbsp; Western
                                 Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="cornRegion" value="eastND">&nbsp; Eastern Region
+                                <input type="radio" name="cornRegion" value="eastND">
+                                &nbsp; Eastern Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="cornRegion" value="langdon">&nbsp; Langdon Region
+                                <input type="radio" name="cornRegion" value="langdon">
+                                &nbsp; Langdon Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="cornRegion" value="centralND">&nbsp; Central Region
+                                <input type="radio" name="cornRegion" value="centralND">
+                                &nbsp; Central Region
                             </label>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset id="tillDiv">
-                        <legend visible="true"><i><strong>tillage</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>tillage</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label>
-                                <input type="radio" name="cornTill" value="longNoTill" checked>&nbsp;
+                                <input type="radio" name="cornTill" value="longNoTill" checked>
+                                &nbsp;
                                 Long-term No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for greater than 5 consecutive years"></span></a>
                             </label>
                             <br>
                             <label>
-                                <input type="radio" name="cornTill" value="convTill">&nbsp;
+                                <input type="radio" name="cornTill" value="convTill">
+                                &nbsp;
                                 Conventional Tillage
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
-                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank
-                                               does not contribute to conventional till."></span></a>
-
+                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank does not contribute to conventional till."></span></a>
                             </label>
                             <br>
                             <label>
-                                <input type="radio" name="cornTill" value="minNoTill">&nbsp;
+                                <input type="radio" name="cornTill" value="minNoTill">
+                                &nbsp;
                                 Minimal No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for less than 5 consecutive years; also called short-term no-till"></span></a>
@@ -531,28 +600,34 @@
                     </fieldset>
                     <br>
                     <fieldset id="soilTextureDiv">
-                        <legend visible="true"><i><strong>soil texture and early season N loss risk
-                                    level</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>soil texture and early season N loss risk
+                                    level</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label>
-                                <input type="radio" name="cornSoilTexture" value="mediumTextureLowRisk" checked>&nbsp;
+                                <input type="radio" name="cornSoilTexture" value="mediumTextureLowRisk" checked>
+                                &nbsp;
                                 Medium-textured soils with low loss risk
                             </label>
                             <br>
                             <label>
-                                <input type="radio" name="cornSoilTexture" value="mediumTextureHighRisk">&nbsp;
+                                <input type="radio" name="cornSoilTexture" value="mediumTextureHighRisk">
+                                &nbsp;
                                 Medium-Textured soils with high loss risk
                             </label>
                             <br>
                             <label>
-                                <input type="radio" name="cornSoilTexture" value="highClayLowRisk">&nbsp;
+                                <input type="radio" name="cornSoilTexture" value="highClayLowRisk">
+                                &nbsp;
                                 High-clay
                                 soils with
                                 low loss risk
                             </label>
                             <br>
                             <label>
-                                <input type="radio" name="cornSoilTexture" value="highClayHighRisk">&nbsp;
+                                <input type="radio" name="cornSoilTexture" value="highClayHighRisk">
+                                &nbsp;
                                 High-clay
                                 soils with
                                 high loss risk
@@ -561,16 +636,13 @@
                     </fieldset>
                 </div>
             </div>
-
             <hr>
-
             <div class="centerDiv">
                 <button type="button" class="btn btn-primary" id="cornCalculateBtn" data-toggle="modal"
                     data-target="#cornModal">
                     <b>CALCULATE</b>
                 </button>
             </div>
-
             <div class="modal fade" id="cornModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -578,17 +650,17 @@
                             <h5 class="modal-title">Nitrogen Recomendation After Credits</h5>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
                         <div class="modal-body">
                             <div class="centerDiv">
-                                <h5 id="cornResultText">Result<h5>
-                                        <h5>&nbsp;&nbsp;&nbsp;±30&nbsp;&nbsp;lbs/acre</h5>
+                                <h5 id="cornResultText">
+                                    Result
+                                </h5>
+                                <h5>&nbsp;&nbsp;&nbsp;±30&nbsp;&nbsp;lbs/acre</h5>
                             </div>
                             <br>
                             <div>
-                                <a href="#corndemo" class="btn btn-warning" data-toggle="collapse" style="float:right">
-                                    Note About the Result
-                                </a>
+                                <a href="#corndemo" class="btn btn-warning floatright" data-toggle="collapse">Note About
+                                    the Result</a>
                                 <div id="corndemo" class="collapse">
                                     <br>
                                     <p>
@@ -621,42 +693,41 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <div id="wheat" style="display:none;">
+        <div id="wheat" class="nodisplay">
             <div class="row">
-                <div class="col-sm-5" style="padding-right:20px;">
+                <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
                         <h5>Spring Wheat & Durum Nitrogen Calculator</h5>
                     </div>
                     <hr>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest wheat/durum price ($/bushel)</strong></i>
+                        <legend visible="true">
+                            <i><strong>closest wheat/durum price ($/bushel)</strong></i>
                         </legend>
                         <div>
-                            <select class="form-control" id="wheatPriceSelect">
-                            </select>
+                            <select class="form-control" id="wheatPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest nitrogen cost ($/lb)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest nitrogen cost ($/lb)</strong></i>
+                        </legend>
                         <div>
-                            <select class="form-control" id="wheatNitrogenPriceSelect">
-                            </select>
+                            <select class="form-control" id="wheatNitrogenPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>percent organic matter in soil (%)</strong></i>
+                        <legend visible="true">
+                            <i><strong>percent organic matter in soil (%)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="wheatOrganicMatterInput" value="0">
@@ -664,7 +735,8 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
+                        <legend visible="true">
+                            <i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="wheatSoilTestNitrateInput"
@@ -673,95 +745,116 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>previous crops planted</strong></i>
+                        <legend visible="true">
+                            <i><strong>previous crops planted</strong></i>
                         </legend>
                         <select class="form-control" id="wheatPreviousCropSelect">
                             <option value="0">no nitrogen-supplying crop</option>
-                            <option value="40">Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
+                            <option value="40">
+                                Soybean, Dry Bean, Field Pea, Lentil, Chickpea, or harvested
                                 Sweet
                                 Clover
                             </option>
                             <option value="0">sugarbeet with yellow leaves at harvest</option>
                             <option value="30">sugarbeet with yellow-green leaves at harvest</option>
                             <option value="80">sugarbeet with dark-green leaves at harvest</option>
-                            <option value="150">harvested alfalfa or unharvested sweet clover (5+ plants per
+                            <option value="150">
+                                harvested alfalfa or unharvested sweet clover (5+ plants per
                                 sqft)
                             </option>
-                            <option value="100">harvested alfalfa or unharvested sweet clover (3-4 plants per
+                            <option value="100">
+                                harvested alfalfa or unharvested sweet clover (3-4 plants per
                                 sqft)
                             </option>
-                            <option value="50">harvested alfalfa or unharvested sweet clover (1-2 plants per
+                            <option value="50">
+                                harvested alfalfa or unharvested sweet clover (1-2 plants per
                                 sqft)
                             </option>
-                            <option value="0">harvested alfalfa or unharvested sweet clover (less than 1 plants
+                            <option value="0">
+                                harvested alfalfa or unharvested sweet clover (less than 1 plants
                                 per
-                                sqft)</option>
+                                sqft)
+                            </option>
                         </select>
                     </fieldset>
                 </div>
-                <div class="col-sm-7" style="padding-left:20px;">
+                <div class="col-sm-7 paddingleft20">
                     <div class="centerDiv">
                         <img src="images/ND_ThreeRegion.png" alt="ND 3-region map" width="75%">
                     </div>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>region in North Dakota</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>region in North Dakota</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="wheatRegion" value="west" checked>&nbsp; Western
+                                <input type="radio" name="wheatRegion" value="west" checked>
+                                &nbsp; Western
                                 Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatRegion" value="east">&nbsp; Eastern Region
+                                <input type="radio" name="wheatRegion" value="east">
+                                &nbsp; Eastern Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatRegion" value="langdon">&nbsp; Langdon Region
+                                <input type="radio" name="wheatRegion" value="langdon">
+                                &nbsp; Langdon Region
                             </label>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>historical productivity</strong></i>
+                        <legend visible="true">
+                            <i><strong>historical productivity</strong></i>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#historicalProductivity" class="btn btn-info" data-toggle="collapse">
-                                Definitions
-                            </a>
+                            <a href="#historicalProductivity" class="btn btn-info"
+                                data-toggle="collapse">Definitions</a>
                         </legend>
-                        <div style="padding-left:5px;">
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="wheatProductivity" value="high" checked>&nbsp; High
+                                <input type="radio" name="wheatProductivity" value="high" checked>
+                                &nbsp; High
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatProductivity" value="medium">&nbsp; Medium
+                                <input type="radio" name="wheatProductivity" value="medium">
+                                &nbsp; Medium
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatProductivity" value="low">&nbsp; Low
+                                <input type="radio" name="wheatProductivity" value="low">
+                                &nbsp; Low
                             </label>
                         </div>
                         <div>
-                            <div id="historicalProductivity" class="collapse" style="padding-left:5px;">
+                            <div id="historicalProductivity" class="collapse paddingleft05">
                                 <br>
-                                <span style="color: darkblue"><em><b>Western Region</b></em></span>
+                                <span class="darkbluecolor"><em><b>Western Region</b></em></span>
                                 <p>
                                     <b>high productivity:</b> historical yields greater than 50
-                                    bushels/acre<br />
+                                    bushels/acre
+                                    <br />
                                     <b>medium productivity:</b> historical yields between 30 bushels/acre and 50
-                                    bushels/acre<br />
-                                    <b>low productivity:</b> historical yields less than 30 bushels/acre<br />
+                                    bushels/acre
+                                    <br />
+                                    <b>low productivity:</b> historical yields less than 30 bushels/acre
+                                    <br />
                                 </p>
                                 <br />
-                                <span style="color: darkblue;"><em><b>Eastern Region and Langdon
+                                <span class="darkbluecolor"><em><b>Eastern Region and Langdon
                                             Region</b></em></span>
                                 <p>
                                     <b>high productivity:</b> historical yields greater than 60
-                                    bushels/acre<br />
+                                    bushels/acre
+                                    <br />
                                     <b>medium productivity:</b> historical yields between 40 bushels/acre and 60
-                                    bushels/acre<br />
-                                    <b>low productivity:</b> historical yields less than 40 bushels/acre<br />
+                                    bushels/acre
+                                    <br />
+                                    <b>low productivity:</b> historical yields less than 40 bushels/acre
+                                    <br />
                                 </p>
                             </div>
                         </div>
@@ -771,24 +864,26 @@
                         <legend visible="true">
                             <i><strong>tillage type</strong></i>
                         </legend>
-                        <div style="padding-left:5px;">
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="wheatTillage" value="convTill" checked>&nbsp;
+                                <input type="radio" name="wheatTillage" value="convTill" checked>
+                                &nbsp;
                                 Conventional Tillage
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
-                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank
-                                        does not contribute to conventional till."></span></a>
+                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank does not contribute to conventional till."></span></a>
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatTillage" value="minNoTill">&nbsp;
+                                <input type="radio" name="wheatTillage" value="minNoTill">
+                                &nbsp;
                                 Minimal No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for less than 5 consecutive years; also called short-term no-till"></span></a>
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="wheatTillage" value="longNoTill">&nbsp;
+                                <input type="radio" name="wheatTillage" value="longNoTill">
+                                &nbsp;
                                 Long-term No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for greater than 5 consecutive years"></span></a>
@@ -797,7 +892,6 @@
                     </fieldset>
                 </div>
             </div>
-
             <hr>
             <div class="centerDiv">
                 <button type="button" class="btn btn-primary" id="wheatCalculateBtn" data-toggle="modal"
@@ -805,7 +899,6 @@
                     <b>CALCULATE</b>
                 </button>
             </div>
-
             <div class="modal fade" id="wheatModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -821,9 +914,8 @@
                             </div>
                             <br>
                             <div>
-                                <a href="#wheatdemo" class="btn btn-warning" data-toggle="collapse" style="float:right">
-                                    Note About the Result
-                                </a>
+                                <a href="#wheatdemo" class="btn btn-warning floatright" data-toggle="collapse">Note
+                                    About the Result</a>
                                 <div id="wheatdemo" class="collapse">
                                     <br>
                                     <p>
@@ -854,37 +946,37 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <div id="barley" style="display:none;">
+        <div id="barley" class="nodisplay">
             <div class="row">
-                <div class="col-sm-5" style="padding-right:20px;">
+                <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
-                        <h5>Two-row Malting Barley Nitrogen Calculator</h5>
+                        <h5>Two-Row Malting Barley Nitrogen Calculator</h5>
                     </div>
                     <hr>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest 2-row barley price ($/bushel)</strong></i>
+                        <legend visible="true">
+                            <i><strong>closest 2-row barley price ($/bushel)</strong></i>
                         </legend>
                         <div>
-                            <select class="form-control" id="barleyPriceSelect">
-                            </select>
+                            <select class="form-control" id="barleyPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>closest nitrogen cost ($/lb)</strong></i></legend>
+                        <legend visible="true">
+                            <i><strong>closest nitrogen cost ($/lb)</strong></i>
+                        </legend>
                         <div>
-                            <select class="form-control" id="barleyNitrogenPriceSelect">
-                            </select>
+                            <select class="form-control" id="barleyNitrogenPriceSelect"></select>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>percent organic matter in soil (%)</strong></i>
+                        <legend visible="true">
+                            <i><strong>percent organic matter in soil (%)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="barleyOrganicMatterInput"
@@ -893,7 +985,8 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
+                        <legend visible="true">
+                            <i><strong>2-ft depth soil test nitrate-N (lbs/acre)</strong></i>
                         </legend>
                         <div class="form-group">
                             <input type="number" step="0.1" class="form-control" id="barleySoilTestNitrateInput"
@@ -902,68 +995,83 @@
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>previous crops planted</strong></i>
+                        <legend visible="true">
+                            <i><strong>previous crops planted</strong></i>
                         </legend>
                         <select class="form-control" id="barleyPreviousCropSelect">
                             <option value="0">no nitrogen-supplying crop</option>
-                            <option value="40">Soybean, Dry edible Bean, Other grain legum crops (Field Pea,
+                            <option value="40">
+                                Soybean, Dry edible Bean, Other grain legum crops (Field Pea,
                                 Lentil,
                                 Chickpea, faba bean, lupin), or Harvested sweet clover
                             </option>
                             <option value="0">sugarbeet with yellow leaves at harvest</option>
                             <option value="30">sugarbeet with yellow-green leaves at harvest</option>
                             <option value="80">sugarbeet with dark-green leaves at harvest</option>
-                            <option value="150">harvested alfalfa or unharvested sweet clover (5+ plants per
+                            <option value="150">
+                                harvested alfalfa or unharvested sweet clover (5+ plants per
                                 sqft)
                             </option>
-                            <option value="100">harvested alfalfa or unharvested sweet clover (3-4 plants per
+                            <option value="100">
+                                harvested alfalfa or unharvested sweet clover (3-4 plants per
                                 sqft)
                             </option>
-                            <option value="50">harvested alfalfa or unharvested sweet clover (1-2 plants per
+                            <option value="50">
+                                harvested alfalfa or unharvested sweet clover (1-2 plants per
                                 sqft)
                             </option>
-                            <option value="0">harvested alfalfa or unharvested sweet clover (less than 1 plants
+                            <option value="0">
+                                harvested alfalfa or unharvested sweet clover (less than 1 plants
                                 per
-                                sqft)</option>
+                                sqft)
+                            </option>
                         </select>
                     </fieldset>
                 </div>
-                <div class="col-sm-7" style="padding-left:20px;">
+                <div class="col-sm-7 paddingleft20">
                     <div class="centerDiv">
                         <img src="images/ND_ThreeRegion.png" alt="ND 3-region map" width="75%">
                     </div>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>region in North Dakota</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>region in North Dakota</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="barleyRegion" value="west" checked>&nbsp; Western
+                                <input type="radio" name="barleyRegion" value="west" checked>
+                                &nbsp; Western
                                 Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="barleyRegion" value="east">&nbsp; Eastern Region
+                                <input type="radio" name="barleyRegion" value="east">
+                                &nbsp; Eastern Region
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="barleyRegion" value="langdon">&nbsp; Langdon Region
+                                <input type="radio" name="barleyRegion" value="langdon">
+                                &nbsp; Langdon Region
                             </label>
                         </div>
                     </fieldset>
                     <br>
                     <fieldset>
-                        <legend visible="true"><i><strong>tillage type</strong></i></legend>
-                        <div style="padding-left:5px;">
+                        <legend visible="true">
+                            <i><strong>tillage type</strong></i>
+                        </legend>
+                        <div class="paddingleft05">
                             <label class="radio-inline">
-                                <input type="radio" name="barleyTillage" value="convTill" checked>&nbsp;
+                                <input type="radio" name="barleyTillage" value="convTill" checked>
+                                &nbsp;
                                 Conventional Tillage
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
-                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank
-                                        does not contribute to conventional till."></span></a>
+                                        title="Tillage greater than 2-inch depth. Thin ammonia shank or strip-till shank does not contribute to conventional till."></span></a>
                             </label>
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <label class="radio-inline">
-                                <input type="radio" name="barleyTillage" value="longNoTill">&nbsp;
+                                <input type="radio" name="barleyTillage" value="longNoTill">
+                                &nbsp;
                                 Long-term No-till
                                 <a href="#"><span class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip"
                                         title="Been in no-till for greater than 5 consecutive years"></span></a>
@@ -972,7 +1080,6 @@
                     </fieldset>
                 </div>
             </div>
-
             <hr>
             <div class="centerDiv">
                 <button type="button" class="btn btn-primary" id="barleyCalculateBtn" data-toggle="modal"
@@ -980,7 +1087,6 @@
                     <b>CALCULATE</b>
                 </button>
             </div>
-
             <div class="modal fade" id="barleyModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -996,10 +1102,8 @@
                             </div>
                             <br>
                             <div>
-                                <a href="#barleyNote" class="btn btn-warning" data-toggle="collapse"
-                                    style="float:right">
-                                    Note About the Result
-                                </a>
+                                <a href="#barleyNote" class="btn btn-warning floatright" data-toggle="collapse">Note
+                                    About the Result</a>
                                 <div id="barleyNote" class="collapse">
                                     <br>
                                     <p>This recommendation value is only for 2-row malting barley.</p>
@@ -1012,7 +1116,7 @@
                                     </p>
                                     <p>
                                         The final Nitrogen recommendation is the average optimal rate.
-                                        Growers may choose to apply up to 30 lb N/acre more or less than the
+                                        Growers may choose to apply up to 15 lb N/acre more or less than the
                                         calculated N rates
                                         due to protein traits of a variety, special soil conditions such as
                                         susceptibility to spring denitrification,
@@ -1028,25 +1132,16 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
     <br>
-    <br>
-
-    <footer id="footer" class="text-center bg-dark footer-span">
+    <footer class="text-center bg-dark footer-span">
         Copyright &copy;
         <script>document.write(new Date().getFullYear())</script> &nbsp;&nbsp;
         <span>Department of Soil Science, North Dakota State University</span>
     </footer>
-
 </body>
-
-
-
-
 
 </html>

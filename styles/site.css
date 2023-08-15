@@ -1,6 +1,16 @@
-html,
 body {
-    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: rgb(246, 245, 250);
+}
+
+.iconwidth {
+    width: 30px;
+}
+
+.introDivPadding {
+    padding: 5px;
 }
 
 .largeBoldFont {
@@ -10,15 +20,6 @@ body {
 
 .footer-span {
     color: rgb(247, 241, 241);
-}
-
-
-#footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 2rem;
-    opacity: 0.4;
 }
 
 .centerDiv {
@@ -37,6 +38,11 @@ body {
     width: 100%;
 }
 
+footer {
+    padding: 5px;
+    height: 40px;
+}
+
 .imageCenter {
     display: block;
     margin-left: auto;
@@ -51,7 +57,7 @@ body {
 }
 
 .cardBackground {
-    background-color: lightyellow;
+    background-color: azure;
 }
 
 .headerStyle {
@@ -138,7 +144,7 @@ fieldset {
     /* border: 1px solid #ccc; */
     /* width: 80%; */
     border-left: 15em;
-    height: 300px;
+    min-height: 100vh;
 }
 
 .doc-href {
@@ -147,4 +153,48 @@ fieldset {
     padding: 10px;
     font-family: cursive;
     font-size: large;
+}
+
+#title {
+    padding: 5px;
+    text-align: center;
+    background-color: rgb(1, 1, 28);
+    color: azure;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.doclist {
+    list-style-type:square; color:orange;
+}
+
+.centertext {
+    text-align: center;
+}
+
+.boldfont {
+    font-weight: bold;
+}
+
+.nodisplay {
+    display: none;
+}
+
+.paddingright20 {
+    padding-right: 20px;
+}
+
+.paddingleft20 {
+    padding-left: 20px;
+}
+
+.paddingleft05 {
+    padding-left: 5px;
+}
+
+.floatright {
+    float: right;
+}
+
+.darkbluecolor{
+    color: darkblue;
 }

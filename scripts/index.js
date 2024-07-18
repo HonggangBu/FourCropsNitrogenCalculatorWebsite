@@ -10,6 +10,10 @@ $(function () {
     // main navigation buttons click/switch
     SwitchActiveLink();
 
+    // auto collapse the main collapsible nav button
+    AutoCollapseCollapsibleNavBtn();
+
+
     //sunflower functions//
     GetSunflowerNewDataTables();
     AddOptions($("#sfNitrogenPriceSelect"), 0.2, 0.1, 2.0, 1, 4); // auto add nitrogen cost list
@@ -36,6 +40,9 @@ $(function () {
 
     // Get the element with id="defaultOpen" in the About section and click on it
     document.getElementById("defaultOpen").click();
+
+    // pop the zoomable map when user clicks on the image
+    ImagePopup();
 
 });
 
@@ -699,3 +706,55 @@ function OnBarleyCalculateBtnClicked() {
 }
 
 
+// auto collapse the main collapsible nav button
+function AutoCollapseCollapsibleNavBtn() {
+    var navLinks = document.querySelectorAll('.nav-link');
+    var navCollapse = document.getElementById('collapsibleNavbar');
+
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            var bsCollapse = new bootstrap.Collapse(navCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+        });
+    });
+}
+
+// pop up the map when user clicks on the image
+// it allows user to zoom in and out and close the pop up
+function ImagePopup() {
+    var popup = document.getElementById('popup');
+    var popupImage = document.getElementById('popupImage');
+    var closeBtn = document.getElementsByClassName('close')[0];
+
+    document.body.addEventListener('click', function (event) {
+        if (event.target.classList.contains('popup-trigger')) {
+            popup.style.display = "flex"; // Use flex display to center the content
+            popupImage.src = event.target.src;
+        }
+    });
+
+    closeBtn.onclick = function () {
+        popup.style.display = "none";
+    }
+
+    popup.onclick = function (event) {
+        if (event.target === popup) {
+            popup.style.display = "none";
+        }
+    }
+
+    // Optional: Add zoom functionality
+    var scale = 1;
+    popupImage.onwheel = function (event) {
+        event.preventDefault();
+        if (event.deltaY < 0) {
+            scale += 0.1;
+        } else {
+            scale -= 0.1;
+        }
+        scale = Math.min(Math.max(0.5, scale), 3); // Set limits for zoom
+        popupImage.style.transform = `scale(${scale})`;
+    }
+}

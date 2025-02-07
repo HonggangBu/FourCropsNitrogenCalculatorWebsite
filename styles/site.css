@@ -92,7 +92,6 @@ legend {
     border: none;
     width: auto;
     font-size: medium;
-
 }
 
 fieldset {
@@ -246,4 +245,27 @@ table td {
     text-align: left;
     padding-left: 5px;
     font-weight: bold;
+}
+
+.right-button {
+    float: right;
+}
+
+thead {
+    font-family: Arial, sans-serif;
+    /* Sets the font type */
+    font-size: 18px;
+    /* Sets the font size */
+    font-weight: bold;
+    /* Makes the font bold */
+    color: #333;
+    /* Sets the text color */
+    background-color: #dbe2f4;
+    /* Sets the background color */
+    text-transform: uppercase;
+    /* Converts text to uppercase */
+    text-align: left;
+    /* Aligns text to the left */
+    padding: 10px;
+    /* Adds padding for spacing */
 }

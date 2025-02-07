@@ -44,6 +44,7 @@ $(function () {
     // pop the zoomable map when user clicks on the image
     ImagePopup();
 
+
 });
 
 ////////////////////////////////////////////////////
@@ -154,6 +155,12 @@ function GetPreviousCropNitrogenCredit(SelectGroupId) {
     return $(gc).val();
 }
 
+// get input value
+function GetInputValue(inputControlId) {
+    let v = $("#" + inputControlId).val();
+    return v > 0 ? v : 0;
+}
+
 // calculate and return soil organic matter nitrogen credit
 // parameter "inputControlId" is the ID of a specific percentage organic matter input value
 function GetOrganicMatterCredit(inputControlId) {
@@ -216,6 +223,44 @@ function GetNewTable(existingTable, difference) {
 }
 
 
+// send values to another page
+function sendValues(valuesArray, targetPage) {
+    // Convert array to JSON string and encode it
+    const encodedValues = encodeURIComponent(JSON.stringify(valuesArray));
+
+    // Pass the encoded array in the URL
+    const url = `${targetPage}?data=${encodedValues}`;
+
+    window.open(url, '_blank'); // Open in a new tab
+}
+
+// get the selected radio button's text
+function GetSelectedRadioText(radioName) {
+    // Get all radio buttons with the specified name
+    var radioButtons = document.querySelectorAll(`input[name="${radioName}"]`);
+
+    // Loop through the radio buttons to find the selected one
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            // Return the text content of the associated label
+            return radioButtons[i].labels[0].textContent.trim();
+        }
+    }
+
+    // Return null if no radio button is selected
+    return null;
+}
+
+
+// get the selected option's text
+function GetSelectedOptionText(selectID) {
+    var selectElement = document.getElementById(selectID);
+
+    // Get the selected option's text
+    return selectElement.options[selectElement.selectedIndex].text;
+}
+
+
 /////////////////////////////////////////////////////
 
 //////////////////////////    SUNFLOWER FUNCTIONS    ////////////////////////////
@@ -247,6 +292,23 @@ function GetSunflowerRegionTillageSeedSelectionCombination() {
         + $("input[name='sfTillage']:checked").val();
     return selections;
 }
+
+/* // get sunflower region
+function GetSunflowerRegion() {
+    return $("input[name='sfRegion']:checked").val();
+}
+
+// get sunflower type
+function GetSunflowerType() {
+    return $("input[name='sfType']:checked").val();
+}
+
+// get sunflower tillage
+function GetSunflowerTillage() {
+    return $("input[name='sfTillage']:checked").val();
+}
+ */
+
 
 // get the sunflower base table (N recommendation table before credits) per the user selection
 function GetSunflowerValueTable(userSelection) {
@@ -330,6 +392,20 @@ function GetSunflowerValueTable(userSelection) {
     return tb;
 }
 
+// collect sunflower data for display in PDF
+function CollectSunflowerData(calculatedResult) {
+    const value1 = GetSelectedOptionText("sfPriceSelect");
+    const value2 = GetSelectedOptionText("sfNitrogenPriceSelect");
+    const value3 = GetInputValue("sfOrganicMatterInput");
+    const value4 = GetInputValue("sfSoilTestNitrateInput");
+    const value5 = GetSelectedOptionText("sfPreviousCropSelect");
+    const value6 = GetSelectedRadioText("sfRegion");
+    const value7 = GetSelectedRadioText("sfTillage");
+    const value8 = GetSelectedRadioText("sfType");
+
+    return [calculatedResult, value1, value2, value3, value4, value5, value6, value7, value8];
+}
+
 // on sunflower calculate button clicked, calculate and display the result
 function OnSunflowerCalculateBtnClicked() {
     $("#sfCalculateBtn").click(function () {
@@ -338,9 +414,22 @@ function OnSunflowerCalculateBtnClicked() {
         let finalResult = GetFinalResult(GetBaseValue(baseValueTable, "sfPriceSelect", "sfNitrogenPriceSelect"), GetSoilTestNitrateCredit("sfSoilTestNitrateInput"),
             GetOrganicMatterCredit("sfOrganicMatterInput"), GetPreviousCropNitrogenCredit("sfPreviousCropSelect"));
 
-        $("#sfResultText").text(finalResult);
+        sendValues(CollectSunflowerData(finalResult), 'sunflowerResult.html');
     });
 }
+
+/* function GetSelectedRadio(name) {
+    const radios = document.getElementsByName(name);
+    for (const radio of radios) {
+        if (radio.checked) {
+            return radio.value;
+        }
+    }
+    return ''; // Return empty string if nothing is selected
+}
+ */
+
+
 
 
 /////////////////////////////////////////////////////////////////////
@@ -499,6 +588,41 @@ function GetCornBaseValue(userCornSelection) {
 }
 
 
+// collect corn data for display in PDF
+function CollectCornData(calculatedResult) {
+    const value1 = GetSelectedOptionText("cornPriceSelect");
+    const value2 = GetSelectedOptionText("cornNitrogenPriceSelect");
+    const value3 = GetInputValue("cornOrganicMatterInput");
+    const value4 = GetInputValue("cornSoilTestNitrateInput");
+    const value5 = GetSelectedOptionText("cornPreviousCropSelect");
+    const value6 = GetSelectedRadioText("cornIrrigation");
+    let value7 = 'N/A';
+    let value8 = 'N/A';
+    let value9 = 'N/A';
+
+    if ($("input[name='cornIrrigation']:checked").val() == "irrigated") {
+        value7 = 'N/A';
+        value8 = 'N/A';
+        value9 = 'N/A';
+    }
+    else {
+        if ($("input[name='cornRegion']:checked").val() == "westND") {
+            value7 = GetSelectedRadioText("cornRegion");
+            value8 = 'N/A';
+            value9 = 'N/A';
+        }
+        else {
+            value7 = GetSelectedRadioText("cornRegion");
+            value8 = GetSelectedRadioText("cornTill");
+            value9 = 'N/A';
+            if (($("input[name='cornRegion']:checked").val() == "eastND") && ($("input[name='cornTill']:checked").val() != "longNoTill")) {
+                value9 = GetSelectedRadioText("cornSoilTexture");
+            }
+        }
+    }
+
+    return [calculatedResult, value1, value2, value3, value4, value5, value6, value7, value8, value9];
+}
 
 
 
@@ -511,8 +635,8 @@ function OnCornCalculateBtnClicked() {
         //alert(baseValue);
         let finalResult = GetFinalResult(baseValue, GetSoilTestNitrateCredit("cornSoilTestNitrateInput"),
             GetOrganicMatterCredit("cornOrganicMatterInput"), GetPreviousCropNitrogenCredit("cornPreviousCropSelect"));
-        $("#cornResultText").text(finalResult);
 
+        sendValues(CollectCornData(finalResult), 'cornResult.html');
     });
 }
 
@@ -629,6 +753,20 @@ function GetWheatBaseValue(userSelection) {
     return v;
 }
 
+// collect wheat/durum data for display in PDF
+function CollectWheatData(calculatedResult) {
+    const value1 = GetSelectedOptionText("wheatPriceSelect");
+    const value2 = GetSelectedOptionText("wheatNitrogenPriceSelect");
+    const value3 = GetInputValue("wheatOrganicMatterInput");
+    const value4 = GetInputValue("wheatSoilTestNitrateInput");
+    const value5 = GetSelectedOptionText("wheatPreviousCropSelect");
+    const value6 = GetSelectedRadioText("wheatRegion");
+    const value7 = GetSelectedRadioText("wheatTillage");
+    const value8 = GetSelectedRadioText("wheatProductivity");
+
+    return [calculatedResult, value1, value2, value3, value4, value5, value6, value7, value8];
+}
+
 
 // Calculate and display wheat nitrogen recommendation result when the calculate button is clicked
 function OnWheatCalculateBtnClicked() {
@@ -637,7 +775,8 @@ function OnWheatCalculateBtnClicked() {
         let baseValue = GetWheatBaseValue(userSelectionStr);
         let finalResult = GetFinalResult(baseValue, GetSoilTestNitrateCredit("wheatSoilTestNitrateInput"),
             GetOrganicMatterCredit("wheatOrganicMatterInput"), GetPreviousCropNitrogenCredit("wheatPreviousCropSelect"));
-        $("#wheatResultText").text(finalResult);
+
+        sendValues(CollectWheatData(finalResult), 'wheatResult.html');
     });
 }
 
@@ -693,6 +832,19 @@ function GetBarleyValueTable(userSelection) {
     return tb;
 }
 
+// collect barley data for display in PDF
+function CollectBarleyData(calculatedResult) {
+    const value1 = GetSelectedOptionText("barleyPriceSelect");
+    const value2 = GetSelectedOptionText("barleyNitrogenPriceSelect");
+    const value3 = GetInputValue("barleyOrganicMatterInput");
+    const value4 = GetInputValue("barleySoilTestNitrateInput");
+    const value5 = GetSelectedOptionText("barleyPreviousCropSelect");
+    const value6 = GetSelectedRadioText("barleyRegion");
+    const value7 = GetSelectedRadioText("barleyTillage");
+
+    return [calculatedResult, value1, value2, value3, value4, value5, value6, value7];
+}
+
 // on barley calculate button clicked, calculate and display the result
 function OnBarleyCalculateBtnClicked() {
     $("#barleyCalculateBtn").click(function () {
@@ -701,7 +853,7 @@ function OnBarleyCalculateBtnClicked() {
         let finalResult = GetFinalResult(GetBaseValue(baseValueTable, "barleyPriceSelect", "barleyNitrogenPriceSelect"), GetSoilTestNitrateCredit("barleySoilTestNitrateInput"),
             GetOrganicMatterCredit("barleyOrganicMatterInput"), GetPreviousCropNitrogenCredit("barleyPreviousCropSelect"));
 
-        $("#barleyResultText").text(finalResult);
+        sendValues(CollectBarleyData(finalResult), 'barleyResult.html');
     });
 }
 

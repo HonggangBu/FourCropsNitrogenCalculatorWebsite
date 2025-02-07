@@ -414,7 +414,7 @@ function OnSunflowerCalculateBtnClicked() {
         let finalResult = GetFinalResult(GetBaseValue(baseValueTable, "sfPriceSelect", "sfNitrogenPriceSelect"), GetSoilTestNitrateCredit("sfSoilTestNitrateInput"),
             GetOrganicMatterCredit("sfOrganicMatterInput"), GetPreviousCropNitrogenCredit("sfPreviousCropSelect"));
 
-        sendValues(CollectSunflowerData(finalResult), 'sunflowerResult.html');
+        sendValues(CollectSunflowerData(finalResult), 'htmls/sunflowerResult.html');
     });
 }
 
@@ -636,7 +636,7 @@ function OnCornCalculateBtnClicked() {
         let finalResult = GetFinalResult(baseValue, GetSoilTestNitrateCredit("cornSoilTestNitrateInput"),
             GetOrganicMatterCredit("cornOrganicMatterInput"), GetPreviousCropNitrogenCredit("cornPreviousCropSelect"));
 
-        sendValues(CollectCornData(finalResult), 'cornResult.html');
+        sendValues(CollectCornData(finalResult), 'htmls/cornResult.html');
     });
 }
 
@@ -776,7 +776,7 @@ function OnWheatCalculateBtnClicked() {
         let finalResult = GetFinalResult(baseValue, GetSoilTestNitrateCredit("wheatSoilTestNitrateInput"),
             GetOrganicMatterCredit("wheatOrganicMatterInput"), GetPreviousCropNitrogenCredit("wheatPreviousCropSelect"));
 
-        sendValues(CollectWheatData(finalResult), 'wheatResult.html');
+        sendValues(CollectWheatData(finalResult), 'htmls/wheatResult.html');
     });
 }
 
@@ -853,7 +853,7 @@ function OnBarleyCalculateBtnClicked() {
         let finalResult = GetFinalResult(GetBaseValue(baseValueTable, "barleyPriceSelect", "barleyNitrogenPriceSelect"), GetSoilTestNitrateCredit("barleySoilTestNitrateInput"),
             GetOrganicMatterCredit("barleyOrganicMatterInput"), GetPreviousCropNitrogenCredit("barleyPreviousCropSelect"));
 
-        sendValues(CollectBarleyData(finalResult), 'barleyResult.html');
+        sendValues(CollectBarleyData(finalResult), 'htmls/barleyResult.html');
     });
 }
 

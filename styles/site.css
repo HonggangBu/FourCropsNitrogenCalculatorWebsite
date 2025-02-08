@@ -152,9 +152,8 @@ fieldset {
 #title {
     padding: 5px;
     text-align: center;
-    background-color: rgb(1, 1, 28);
-    color: azure;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: darkblue;
+    font-family: "Lobster", "Dancing Script", "Pacifico", cursive;
 }
 
 .doclist {

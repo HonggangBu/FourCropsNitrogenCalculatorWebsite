@@ -1,5 +1,9 @@
 
-// Function to get query parameters and decode to an array
+/**
+ * Function to get query parameters and decode to an array
+ *
+ * @returns {array} the decoded array from the URL of another page
+ */
 function GetDecodedValues() {
     const params = new URLSearchParams(window.location.search);
     const encodedValues = params.get('data');
@@ -12,7 +16,13 @@ function GetDecodedValues() {
     }
 }
 
-// Function to generate and download PDF
+/**
+ * Function to generate and download PDF
+ *
+ * @param {string} downloadPdfBtnID - ID of the download PDF button
+ * @param {string} contentID - ID of the content to be converted to PDF
+ * @param {string} fileName - Name of the PDF file to be saved
+ */
 function GeneratePDF(downloadPdfBtnID, contentID, fileName) {
     btn = document.getElementById(downloadPdfBtnID);
     btn.addEventListener('click', function () {
@@ -35,7 +45,14 @@ function GeneratePDF(downloadPdfBtnID, contentID, fileName) {
     });
 }
 
-// Function to display the result and parameter values in PDF
+/**
+ * Function to display the result and parameter values in PDF
+ *
+ * @param {string} noteID - ID of the common note element
+ * @param {array} tdIDArray - array of IDs of the parameter value elements
+ * @param {string} resultDivID - ID of the result value element
+ * @param {string} plusMinusValue - plus or minus value
+ */
 function DisplayResult(noteID, tdIDArray, resultDivID, plusMinusValue) {
     // define the common text
     const noteText = `This recommendation is calculated from the web application 

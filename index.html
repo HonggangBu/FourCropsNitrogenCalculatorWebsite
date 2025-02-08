@@ -26,9 +26,6 @@
 </head>
 
 <body>
-    <div class="center" id="title">
-        <h4>North Dakota Crop Nitrogen Recommendation Calculators</h4>
-    </div>
     <div id="popup" class="popup">
         <span class="close">&times;</span>
         <img class="popup-content" id="popupImage">
@@ -44,30 +41,34 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav" id="navBtns">
                 <li class="nav-item">
-                    <a id="btnAbout" class="nav-link active largeBoldFont" href="#">Home</a>
+                    <a id="btnAbout" class="nav-link active largeBoldFont" href="#" data-target="about">Home</a>
                 </li>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <li class="nav-item">
-                    <a id="btnSunflower" class="nav-link largeBoldFont" href="#">Sunflower</a>
+                    <a id="btnSunflower" class="nav-link largeBoldFont" href="#" data-target="sunflower">Sunflower</a>
                 </li>
                 &nbsp;
                 <li class="nav-item">
-                    <a id="btnCorn" class="nav-link largeBoldFont" href="#">Corn</a>
+                    <a id="btnCorn" class="nav-link largeBoldFont" href="#" data-target="corn">Corn</a>
                 </li>
                 &nbsp;
                 <li class="nav-item">
-                    <a id="btnWheat" class="nav-link largeBoldFont" href="#">Wheat/Durum</a>
+                    <a id="btnWheat" class="nav-link largeBoldFont" href="#" data-target="wheat">Wheat/Durum</a>
                 </li>
                 &nbsp;
                 <li class="nav-item">
-                    <a id="btnBarley" class="nav-link largeBoldFont" href="#">Barley</a>
+                    <a id="btnBarley" class="nav-link largeBoldFont" href="#" data-target="barley">Barley</a>
                 </li>
             </ul>
         </div>
     </nav>
     <br>
     <div class="container">
-        <div id="about">
+        <div id="about" class="section">
+            <div class="center" id="title">
+                <h3>North Dakota Crop Nitrogen Recommendation Calculators</h3>
+            </div>
+
             <div class="row">
                 <div class="col-sm-2">
                     <div class="tab">
@@ -299,7 +300,7 @@
                 </div>
             </div>
         </div>
-        <div id="sunflower" class="nodisplay">
+        <div id="sunflower" class="nodisplay section">
             <div class="row">
                 <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
@@ -503,7 +504,7 @@
                 </button>
             </div>
         </div>
-        <div id="corn" class="nodisplay">
+        <div id="corn" class="nodisplay section">
             <div class="row">
                 <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
@@ -736,7 +737,7 @@
                 </button>
             </div>
         </div>
-        <div id="wheat" class="nodisplay">
+        <div id="wheat" class="nodisplay section">
             <div class="row">
                 <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">
@@ -976,7 +977,7 @@
                 </button>
             </div>
         </div>
-        <div id="barley" class="nodisplay">
+        <div id="barley" class="nodisplay section">
             <div class="row">
                 <div class="col-sm-5 paddingright20">
                     <div class="aboutTitles">

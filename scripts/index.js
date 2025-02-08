@@ -43,17 +43,33 @@ $(function () {
 
     // pop the zoomable map when user clicks on the image
     ImagePopup();
-
-
 });
 
-////////////////////////////////////////////////////
-//////////////////////    subroutine    /////////////////////////
+// #region Sub Functions
 
-/////////////////////////   COMMON FUNCTIONS        /////////////////////////////
-
-// control the navigations in the "About" page
-function openTab(evt, tabName) {
+// #region Common Sub Functions
+/**
+ * Opens a specific tab and displays its content while hiding others.
+ * Specifically, this function is used to control the navigations in the "About" page
+ * 
+ * @param {Event} evt - The event object triggered by the tab click.
+ * @param {string} tabName - The ID of the tab content to be displayed.
+ *
+ * @returns {void} This function does not return a value. It modifies the DOM to show the selected tab's content.
+ *
+ * @description
+ * The `openTab` function is used to manage the display of tabbed content on a webpage. When a tab is clicked,
+ * it hides all other tab contents and displays the content associated with the clicked tab. It also updates
+ * the active tab's styling by adding the "active" class to the clicked tab and removing it from others.
+ *
+ * @example
+ * // HTML structure:
+ * // <button class="tablinks" onclick="openTab(event, 'Tab1')">Tab 1</button>
+ * // <div id="Tab1" class="tabcontent">Content for Tab 1</div>
+ *
+ * // JavaScript usage:
+ * openTab(event, 'Tab1');
+ */function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -67,67 +83,116 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-// set main navigaion bar active button
-// and show or hide corresponding contents
+/**
+ * Switches the active link and displays the corresponding content.
+ * set main navigaion bar active button
+ * and show or hide corresponding contents
+
+ * @returns { void} This function does not return a value.It directly modifies the DOM by adding or removing classes from elements.
+ */
 function SwitchActiveLink() {
-    var header = document.getElementById("navBtns");
-    var btns = header.getElementsByClassName("nav-link");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = $(".active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
+    const navBtns = document.getElementById("navBtns");
+    const links = navBtns.getElementsByClassName("nav-link");
+    //const sections = ["about", "corn", "wheat", "sunflower", "barley"];
+    const sections = document.getElementsByClassName("section"); // Get all elements with the class "section"
+
+    Array.from(links).forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Remove active class from current active link
+            document.querySelector(".nav-link.active").classList.remove("active");
+
+            // Add active class to clicked link
+            this.classList.add("active");
+
+            // Hide all sections
+            Array.from(sections).forEach(section => {
+                section.style.display = "none";
+            });
+
+            // Show the corresponding section
+            const targetSection = this.getAttribute("data-target");
+            document.getElementById(targetSection).style.display = "block";
         });
-    }
-
-    $("#btnAbout").click(function () {
-        $("#about").show();
-        $("#corn").hide();
-        $("#wheat").hide();
-        $("#sunflower").hide();
-        $("#barley").hide();
-    });
-
-    $("#btnCorn").click(function () {
-        $("#about").hide();
-        $("#corn").show();
-        $("#wheat").hide();
-        $("#sunflower").hide();
-        $("#barley").hide();
-    });
-
-    $("#btnWheat").click(function () {
-        $("#about").hide();
-        $("#corn").hide();
-        $("#wheat").show();
-        $("#sunflower").hide();
-        $("#barley").hide();
-    });
-
-    $("#btnSunflower").click(function () {
-        $("#about").hide();
-        $("#corn").hide();
-        $("#wheat").hide();
-        $("#sunflower").show();
-        $("#barley").hide();
-    });
-
-    $("#btnBarley").click(function () {
-        $("#about").hide();
-        $("#corn").hide();
-        $("#wheat").hide();
-        $("#sunflower").hide();
-        $("#barley").show();
     });
 }
 
+// auto collapse the main collapsible nav button
+function AutoCollapseCollapsibleNavBtn() {
+    var navLinks = document.querySelectorAll('.nav-link');
+    var navCollapse = document.getElementById('collapsibleNavbar');
 
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            var bsCollapse = new bootstrap.Collapse(navCollapse, {
+                toggle: false
+            });
+            bsCollapse.hide();
+        });
+    });
+}
+
+// pop up the map when user clicks on the image
+// it allows user to zoom in and out and close the pop up
+function ImagePopup() {
+    var popup = document.getElementById('popup');
+    var popupImage = document.getElementById('popupImage');
+    var closeBtn = document.getElementsByClassName('close')[0];
+
+    document.body.addEventListener('click', function (event) {
+        if (event.target.classList.contains('popup-trigger')) {
+            popup.style.display = "flex"; // Use flex display to center the content
+            popupImage.src = event.target.src;
+        }
+    });
+
+    closeBtn.onclick = function () {
+        popup.style.display = "none";
+    }
+
+    popup.onclick = function (event) {
+        if (event.target === popup) {
+            popup.style.display = "none";
+        }
+    }
+
+    // Optional: Add zoom functionality
+    var scale = 1;
+    popupImage.onwheel = function (event) {
+        event.preventDefault();
+        if (event.deltaY < 0) {
+            scale += 0.1;
+        } else {
+            scale -= 0.1;
+        }
+        scale = Math.min(Math.max(0.5, scale), 3); // Set limits for zoom
+        popupImage.style.transform = `scale(${scale})`;
+    }
+}
 
 // dynamically add select control (drop list) options
+/**
+ * Adds options to a select control (drop-down list) dynamically.
+ *
+ * @param {HTMLElement} selectControl - The DOM element representing the select control to which options will be added.
+ * @param {number} startValue - The initial numeric value for the first option.
+ * @param {number} increment - The amount by which each subsequent option's value will increase.
+ * @param {number} endValue - The maximum numeric value for the options.
+ * @param {number} precision - The number of decimal places to which each option's value should be rounded.
+ * @param {number} selectedIndex - The index of the option that should be selected by default.
+ *
+ * @returns {void} This function does not return a value. It directly modifies the DOM by appending options to the select control.
+ *
+ * @example
+ * // Adds options ranging from 0 to 10 with an increment of 1 and a precision of 2 decimal places,
+ * // and selects the option at index 5 by default.
+ * AddOptions(mySelectElement, 0, 1, 10, 2, 5);
+ */
 function AddOptions(selectControl, startValue, increment, endValue, precision, selectedIndex) {
     var optTemp, v;
     var len = Math.floor((endValue - startValue) / increment) + 1;
-    for (var i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
         v = startValue + i * increment;
         v = Number(v).toFixed(precision);
         if (i == selectedIndex) {
@@ -141,7 +206,26 @@ function AddOptions(selectControl, startValue, increment, endValue, precision, s
     }
 }
 
-// get soil test nitrate N credit
+/**
+ * Retrieves the nitrate credit value from a specified input control.
+ *
+ * This function accesses an HTML input element by its ID, retrieves its current value,
+ * and processes it as the nitrate credit for soil testing purposes.
+ *
+ * @param {string} inputControlId - The ID of the HTML input element from which to retrieve the nitrate credit value.
+ *
+ * @returns {number|string} The value of the nitrate credit from the specified input control. The return type depends on the input's value type.
+ *
+ * @description
+ * The `GetSoilTestNitrateCredit` function is designed to interact with the DOM to fetch the value of a specific input control.
+ * It uses jQuery to select the input element by its ID and retrieve its current value. This value is intended to represent
+ * the nitrate credit obtained from soil testing, which can be used in further calculations or displayed to the user.
+ *
+ * @example
+ * // Assuming there is an input element with ID 'nitrateInput' in the HTML:
+ * let nitrateCredit = GetSoilTestNitrateCredit('nitrateInput');
+ * console.log(nitrateCredit); // Outputs the value of the input element with ID 'nitrateInput'
+ */
 function GetSoilTestNitrateCredit(inputControlId) {
     let v = $("#" + inputControlId).val();
     return v > 0 ? v : 0;
@@ -259,12 +343,10 @@ function GetSelectedOptionText(selectID) {
     // Get the selected option's text
     return selectElement.options[selectElement.selectedIndex].text;
 }
+// #endregion
 
 
-/////////////////////////////////////////////////////
-
-//////////////////////////    SUNFLOWER FUNCTIONS    ////////////////////////////
-
+// #region Sunflower Sub Functions
 // calculate the rest sunflower base table values based on existing table values
 function GetSunflowerNewDataTables() {
     const sfConvTillDiff = 50;
@@ -428,14 +510,11 @@ function OnSunflowerCalculateBtnClicked() {
     return ''; // Return empty string if nothing is selected
 }
  */
+// #endregion
 
 
 
-
-/////////////////////////////////////////////////////////////////////
-
-/////////////////  CORN FUNCTIONS  /////////////////////////
-
+// #region Corn SUB FUNCTIONS
 // hide or show some corn UI divisions in response to user selection of irrigation type, region, and tillage type
 // hide or show division based on irrigation default selection or selection change
 function OnCornIrrigationChange() {
@@ -639,12 +718,10 @@ function OnCornCalculateBtnClicked() {
         sendValues(CollectCornData(finalResult), 'htmls/cornResult.html');
     });
 }
+// #endregion
 
-/////////////////////////////////////////////
 
-/////////////////////  WHEAT FUNCTIONS  ////////////////////////
-
-// 
+// #region Wheat Sub Functions
 // get the string of the combination of wheat region, historical productivity, and tillage type based on user selection
 function GetWheatRegionTillageProductivitySelectionCombination() {
     let selections = "";
@@ -779,13 +856,10 @@ function OnWheatCalculateBtnClicked() {
         sendValues(CollectWheatData(finalResult), 'htmls/wheatResult.html');
     });
 }
+// #endregion
 
 
-
-/////////////////////////////////////////////////////
-
-//////////////////////////    BARLEY FUNCTIONS    ////////////////////////////
-
+// #region Barley Sub Functions
 // calculate the rest barley base table values based on existing table values
 function GetBarleyNewDataTables() {
     const barleyLongNoTillDiff = -50;
@@ -858,55 +932,5 @@ function OnBarleyCalculateBtnClicked() {
 }
 
 
-// auto collapse the main collapsible nav button
-function AutoCollapseCollapsibleNavBtn() {
-    var navLinks = document.querySelectorAll('.nav-link');
-    var navCollapse = document.getElementById('collapsibleNavbar');
-
-    navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            var bsCollapse = new bootstrap.Collapse(navCollapse, {
-                toggle: false
-            });
-            bsCollapse.hide();
-        });
-    });
-}
-
-// pop up the map when user clicks on the image
-// it allows user to zoom in and out and close the pop up
-function ImagePopup() {
-    var popup = document.getElementById('popup');
-    var popupImage = document.getElementById('popupImage');
-    var closeBtn = document.getElementsByClassName('close')[0];
-
-    document.body.addEventListener('click', function (event) {
-        if (event.target.classList.contains('popup-trigger')) {
-            popup.style.display = "flex"; // Use flex display to center the content
-            popupImage.src = event.target.src;
-        }
-    });
-
-    closeBtn.onclick = function () {
-        popup.style.display = "none";
-    }
-
-    popup.onclick = function (event) {
-        if (event.target === popup) {
-            popup.style.display = "none";
-        }
-    }
-
-    // Optional: Add zoom functionality
-    var scale = 1;
-    popupImage.onwheel = function (event) {
-        event.preventDefault();
-        if (event.deltaY < 0) {
-            scale += 0.1;
-        } else {
-            scale -= 0.1;
-        }
-        scale = Math.min(Math.max(0.5, scale), 3); // Set limits for zoom
-        popupImage.style.transform = `scale(${scale})`;
-    }
-}
+// #endregion
+// #endregion

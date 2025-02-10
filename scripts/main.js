@@ -45,7 +45,8 @@ $(function () {
     ImagePopup();
 });
 
-// #region Sub Functions
+// #region All Sub Functions
+
 
 // #region Common Sub Functions
 /**
@@ -118,7 +119,11 @@ function SwitchActiveLink() {
     });
 }
 
-// auto collapse the main collapsible nav button
+/**
+ * Automatically collapses the main collapsible navigation button when a link is clicked.
+ * 
+ * @returns {void}
+ */
 function AutoCollapseCollapsibleNavBtn() {
     var navLinks = document.querySelectorAll('.nav-link');
     var navCollapse = document.getElementById('collapsibleNavbar');
@@ -133,8 +138,11 @@ function AutoCollapseCollapsibleNavBtn() {
     });
 }
 
-// pop up the map when user clicks on the image
-// it allows user to zoom in and out and close the pop up
+/**
+ * Pops up the map when the user clicks on the image, allowing zooming and closing.
+ * 
+ * @returns {void}
+ */
 function ImagePopup() {
     var popup = document.getElementById('popup');
     var popupImage = document.getElementById('popupImage');
@@ -231,22 +239,35 @@ function GetSoilTestNitrateCredit(inputControlId) {
     return v > 0 ? v : 0;
 }
 
-// return previous crop nitrogen credit value
-// parameter "SelectGroupId" is the ID of any select group control
+/**
+ * Returns the previous crop nitrogen credit value.
+ * 
+ * @param {string} SelectGroupId - The ID of the select group control.
+ * @returns {string} Previous crop nitrogen credit value.
+ */
 function GetPreviousCropNitrogenCredit(SelectGroupId) {
     let gc = "#" + SelectGroupId;
     //var selectedIndex = $(gc).prop("selectedIndex");
     return $(gc).val();
 }
 
-// get input value
+/**
+ * Retrieves the value from an input control.
+ * 
+ * @param {string} inputControlId - The ID of the input control.
+ * @returns {number} The value of the input control, or 0 if the value is not greater than 0.
+ */
 function GetInputValue(inputControlId) {
     let v = $("#" + inputControlId).val();
     return v > 0 ? v : 0;
 }
 
-// calculate and return soil organic matter nitrogen credit
-// parameter "inputControlId" is the ID of a specific percentage organic matter input value
+/**
+ * Calculates and returns the soil organic matter nitrogen credit.
+ * 
+ * @param {string} inputControlId - The ID of a specific percentage organic matter input control for organic matter percentage.
+ * @returns {number} The calculated organic matter credit based on the input value.
+ */
 function GetOrganicMatterCredit(inputControlId) {
     let inputValue = $("#" + inputControlId).val();
     var thresholdLow = 6.0;
@@ -261,7 +282,14 @@ function GetOrganicMatterCredit(inputControlId) {
     return credit;
 }
 
-// get base value from a matrix or table
+/**
+ * Retrieves the base value from a matrix or table based on crop price and nitrogen price indices.
+ * 
+ * @param {Array} baseTable - The base table containing the values.
+ * @param {string} cropPriceSelectControlId - The ID of the crop price select control.
+ * @param {string} nitrogenPriceSelectControlId - The ID of the nitrogen price select control.
+ * @returns {number} The base value from the table corresponding to the selected indices.
+ */
 function GetBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectControlId) {
     let baseValue;
     let cropPriceIndex = parseInt($("#" + cropPriceSelectControlId).prop("selectedIndex"));
@@ -270,7 +298,15 @@ function GetBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectCo
     return baseValue;
 }
 
-// get modified new base value from a data table
+/**
+ * Retrieves a modified new base value from a data table by adding a difference to the base value.
+ * 
+ * @param {Array} baseTable - The base table containing the values.
+ * @param {string} cropPriceSelectControlId - The ID of the crop price select control.
+ * @param {string} nitrogenPriceSelectControlId - The ID of the nitrogen price select control.
+ * @param {number} difference - The difference to add to the base value.
+ * @returns {number} The modified base value.
+ */
 function GetNewBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectControlId, difference) {
     let v = GetBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelectControlId);
     /* if (v > 0) {
@@ -280,15 +316,28 @@ function GetNewBaseValue(baseTable, cropPriceSelectControlId, nitrogenPriceSelec
     return v;
 }
 
-
-// General calculation model
-// for sunflower, the tillageCredit is always equal to 0 because the base table already contains tillage credit
+/**
+ * This is the main function for calculating the final result.
+ * Calculates the final result by subtracting credits from the base value.
+ * 
+ * @param {number} baseValue - The base value before credits.
+ * @param {number} soilTestNitrateCredit - The soil test nitrate credit.
+ * @param {number} organicMatterCredit - The organic matter credit.
+ * @param {number} prevCropCredit - The previous crop credit.
+ * @returns {number} The final result after subtracting credits, or 0 if the result is negative.
+ */
 function GetFinalResult(baseValue, soilTestNitrateCredit, organicMatterCredit, prevCropCredit) {
     let v = Math.round(baseValue - soilTestNitrateCredit - organicMatterCredit - prevCropCredit);
     return v > 0 ? v : 0;
 }
 
-// calculate new table values based on existing table and the desired difference
+/**
+ * Calculates new table values based on an existing table and a desired difference.
+ * 
+ * @param {Array} existingTable - The existing table to modify.
+ * @param {number} difference - The difference to add to each value in the table.
+ * @returns {Array} A new table with modified values.
+ */
 function GetNewTable(existingTable, difference) {
     let newTable = JSON.parse(JSON.stringify(existingTable)); //deep copy, only copy value without reference
     let rowNum = existingTable.length;
@@ -307,7 +356,13 @@ function GetNewTable(existingTable, difference) {
 }
 
 
-// send values to another page
+/**
+ * Sends an array of values to another page via URL parameters.
+ * 
+ * @param {Array} valuesArray - The array of values to send.
+ * @param {string} targetPage - The target page to which the values will be sent.
+ * @returns {void}
+ */
 function sendValues(valuesArray, targetPage) {
     // Convert array to JSON string and encode it
     const encodedValues = encodeURIComponent(JSON.stringify(valuesArray));
@@ -318,7 +373,12 @@ function sendValues(valuesArray, targetPage) {
     window.open(url, '_blank'); // Open in a new tab
 }
 
-// get the selected radio button's text
+/**
+ * Retrieves the text of the selected radio button.
+ * 
+ * @param {string} radioName - The name of the radio button group.
+ * @returns {string|null} The text of the selected radio button, or null if none is selected.
+ */
 function GetSelectedRadioText(radioName) {
     // Get all radio buttons with the specified name
     var radioButtons = document.querySelectorAll(`input[name="${radioName}"]`);
@@ -336,7 +396,12 @@ function GetSelectedRadioText(radioName) {
 }
 
 
-// get the selected option's text
+/**
+ * Retrieves the text of the selected option in a select control.
+ * 
+ * @param {string} selectID - The ID of the select control.
+ * @returns {string} The text of the selected option.
+ */
 function GetSelectedOptionText(selectID) {
     var selectElement = document.getElementById(selectID);
 
@@ -347,7 +412,11 @@ function GetSelectedOptionText(selectID) {
 
 
 // #region Sunflower Sub Functions
-// calculate the rest sunflower base table values based on existing table values
+/**
+ * Calculates the rest of the sunflower base table values based on existing table values.
+ * 
+ * @returns {void}
+ */
 function GetSunflowerNewDataTables() {
     const sfConvTillDiff = 50;
     const sfMinNotillDiff = 20;
@@ -366,7 +435,11 @@ function GetSunflowerNewDataTables() {
     sunflowerLangdonOilseedMinimalnotill = GetNewTable(sunflowerEasternOilseedMinimalnotill, sfLangdonDiff);
 }
 
-// get the string of the combination of sunflower region, sunflower type, and tillage type based on user selection
+/**
+ * Retrieves the string combination of sunflower region, type, and tillage based on user selection.
+ * 
+ * @returns {string} The combination of user selections for sunflower region, type, and tillage.
+ */
 function GetSunflowerRegionTillageSeedSelectionCombination() {
     let selections = "";
     selections = $("input[name='sfRegion']:checked").val() + "_"
@@ -375,24 +448,12 @@ function GetSunflowerRegionTillageSeedSelectionCombination() {
     return selections;
 }
 
-/* // get sunflower region
-function GetSunflowerRegion() {
-    return $("input[name='sfRegion']:checked").val();
-}
-
-// get sunflower type
-function GetSunflowerType() {
-    return $("input[name='sfType']:checked").val();
-}
-
-// get sunflower tillage
-function GetSunflowerTillage() {
-    return $("input[name='sfTillage']:checked").val();
-}
+/**
+ * Retrieves the sunflower base table (N recommendation table before credits) based on user selection.
+ * 
+ * @param {string} userSelection - The user's selection for sunflower region, type, and tillage.
+ * @returns {Array} The base table corresponding to the user's selection.
  */
-
-
-// get the sunflower base table (N recommendation table before credits) per the user selection
 function GetSunflowerValueTable(userSelection) {
     let tb;
     switch (userSelection) {
@@ -474,7 +535,12 @@ function GetSunflowerValueTable(userSelection) {
     return tb;
 }
 
-// collect sunflower data for display in PDF
+/**
+ * Collects sunflower data for display in PDF.
+ * 
+ * @param {number} calculatedResult - The calculated result to be displayed.
+ * @returns {Array} An array containing the collected data for display.
+ */
 function CollectSunflowerData(calculatedResult) {
     const value1 = GetSelectedOptionText("sfPriceSelect");
     const value2 = GetSelectedOptionText("sfNitrogenPriceSelect");
@@ -488,7 +554,11 @@ function CollectSunflowerData(calculatedResult) {
     return [calculatedResult, value1, value2, value3, value4, value5, value6, value7, value8];
 }
 
-// on sunflower calculate button clicked, calculate and display the result
+/**
+ * Handles the sunflower calculate button click event, calculates the result, and displays it.
+ * 
+ * @returns {void}
+ */
 function OnSunflowerCalculateBtnClicked() {
     $("#sfCalculateBtn").click(function () {
         let userSelectionStr = GetSunflowerRegionTillageSeedSelectionCombination();
@@ -500,23 +570,16 @@ function OnSunflowerCalculateBtnClicked() {
     });
 }
 
-/* function GetSelectedRadio(name) {
-    const radios = document.getElementsByName(name);
-    for (const radio of radios) {
-        if (radio.checked) {
-            return radio.value;
-        }
-    }
-    return ''; // Return empty string if nothing is selected
-}
- */
 // #endregion
 
 
-
 // #region Corn SUB FUNCTIONS
-// hide or show some corn UI divisions in response to user selection of irrigation type, region, and tillage type
-// hide or show division based on irrigation default selection or selection change
+
+/**
+ * Hide or show division based on irrigation default selection or selection change.
+ * 
+ * @returns {void}
+ */
 function OnCornIrrigationChange() {
     CornIrrigationResponse();
     $("input[name='cornIrrigation']").on("change", function () {
@@ -524,7 +587,11 @@ function OnCornIrrigationChange() {
     });
 }
 
-// hide or show division based on irrigation selection
+/**
+ * Hides or shows the non-irrigation related division based on irrigation selection.
+ * 
+ * @returns {void}
+ */
 function CornIrrigationResponse() {
     if ($("input[name='cornIrrigation']:checked").val() === 'nonIrrigated') {
         $("#nonIrrigationRelatedDiv").show();
@@ -534,7 +601,11 @@ function CornIrrigationResponse() {
     }
 }
 
-// hide or show tillage div and soil texture div based on region default selection or selection change
+/**
+ * Hides or shows the tillage and soil texture divisions based on region selection.
+ * 
+ * @returns {void}
+ */
 function OnCornRegionChange() {
     CornRegionResponse();
     $("input[name='cornRegion']").on("change", function () {
@@ -542,8 +613,13 @@ function OnCornRegionChange() {
     });
 }
 
-// sub function of "OnCornRegionChange()"
 // hide or show tillage div and soil texture div based on region selection 
+/**
+ * Hides or shows the tillage and soil texture divisions based on region selection.
+ * sub function of "OnCornRegionChange()"
+ * 
+ * @returns {void}
+ */
 function CornRegionResponse() {
     if ($("input[name='cornRegion']:checked").val() === 'westND') {
         $("#tillDiv").hide();
@@ -560,7 +636,11 @@ function CornRegionResponse() {
 }
 
 
-// hide or show the division of soil texture based on the change of tillage
+/**
+ * Hides or shows the soil texture division based on tillage selection.
+ * 
+ * @returns {void}
+ */
 function OnCornTillChange() {
     CornTillResponse();
     $("input[name='cornTill']").on("change", function () {
@@ -568,8 +648,12 @@ function OnCornTillChange() {
     });
 }
 
-// subfunction of "OnCornTillChange"
-// hide or show the division of soil texture based on the change of tillage
+/**
+ * Hides or shows the soil texture division based on tillage selection.
+ * subfunction of "OnCornTillChange"
+ * 
+ * @returns {void}
+ */
 function CornTillResponse() {
     if ($("input[name='cornRegion']:checked").val() === 'eastND') {
         if ($("input[name='cornTill']:checked").val() === 'longNoTill') {
@@ -581,7 +665,11 @@ function CornTillResponse() {
     }
 }
 
-
+/**
+ * Retrieves the string combination of corn irrigation, region, tillage, and soil texture based on user selection.
+ * 
+ * @returns {string} The combination of user selections for corn irrigation, region, tillage, and soil texture.
+ */
 function GetCornUserSelectionStringCombination() {
     let str = "";
     if ($("input[name='cornIrrigation']:checked").val() == "irrigated") {
@@ -602,10 +690,12 @@ function GetCornUserSelectionStringCombination() {
 }
 
 
-//
-//
-//
-// get the corn nitrogen recommendation base value before credits from the corresponding base table
+/**
+ * Retrieves the corn nitrogen recommendation base value before credits from the corresponding base table.
+ * 
+ * @param {string} userCornSelection - The user's selection for corn irrigation, region, tillage, and soil texture.
+ * @returns {number} The base value corresponding to the user's selection.
+ */
 function GetCornBaseValue(userCornSelection) {
     let v = 0;
     const minNoTillDiff = 20;
@@ -667,7 +757,12 @@ function GetCornBaseValue(userCornSelection) {
 }
 
 
-// collect corn data for display in PDF
+/**
+ * Collects corn data for display in PDF.
+ * 
+ * @param {number} calculatedResult - The calculated result to be displayed.
+ * @returns {Array} An array containing the collected data for display.
+ */
 function CollectCornData(calculatedResult) {
     const value1 = GetSelectedOptionText("cornPriceSelect");
     const value2 = GetSelectedOptionText("cornNitrogenPriceSelect");
@@ -705,7 +800,11 @@ function CollectCornData(calculatedResult) {
 
 
 
-// when corn calculate button is clicked, calculate and display the nitrogen recommendation result
+/**
+ * Handles the corn calculate button click event, calculates the result, and displays it.
+ * 
+ * @returns {void}
+ */
 function OnCornCalculateBtnClicked() {
     $("#cornCalculateBtn").click(function () {
         let userSelectionStr = GetCornUserSelectionStringCombination();
@@ -722,7 +821,11 @@ function OnCornCalculateBtnClicked() {
 
 
 // #region Wheat Sub Functions
-// get the string of the combination of wheat region, historical productivity, and tillage type based on user selection
+/**
+ * Retrieves the string combination of wheat region, historical productivity, and tillage type based on user selection.
+ * 
+ * @returns {string} The combination of user selections for wheat region, productivity, and tillage.
+ */
 function GetWheatRegionTillageProductivitySelectionCombination() {
     let selections = "";
     selections = $("input[name='wheatRegion']:checked").val() + "_"
@@ -731,9 +834,14 @@ function GetWheatRegionTillageProductivitySelectionCombination() {
     return selections;
 }
 
-// This function return the actual and exact base value based on user selections
-// The returned value equals base value from one of the nine base tables plus tillage credit
-// That means tillage credit is already included in the returned value
+/**
+ * Retrieves the actual and exact base value based on user selections.
+ * The returned value equals the base value from one of the nine base tables plus tillage credit.
+ * That means tillage credit is already included in the returned value.
+ * 
+ * @param {string} userSelection - The user's selection for wheat region, productivity, and tillage.
+ * @returns {number} The base value corresponding to the user's selection.
+ */
 function GetWheatBaseValue(userSelection) {
     const minNotillDiff = 20;
     const eastWestLongNotillDiff = -50; // Easter medium long-term no-till is an exception
@@ -830,7 +938,12 @@ function GetWheatBaseValue(userSelection) {
     return v;
 }
 
-// collect wheat/durum data for display in PDF
+/**
+ * Collects wheat/durum data for display in PDF.
+ * 
+ * @param {number} calculatedResult - The calculated result to be displayed.
+ * @returns {Array} An array containing the collected data for display.
+ */
 function CollectWheatData(calculatedResult) {
     const value1 = GetSelectedOptionText("wheatPriceSelect");
     const value2 = GetSelectedOptionText("wheatNitrogenPriceSelect");
@@ -845,7 +958,11 @@ function CollectWheatData(calculatedResult) {
 }
 
 
-// Calculate and display wheat nitrogen recommendation result when the calculate button is clicked
+/**
+ * Handles the wheat calculate button click event, calculates the result, and displays it.
+ * 
+ * @returns {void}
+ */
 function OnWheatCalculateBtnClicked() {
     $("#wheatCalculateBtn").click(function () {
         let userSelectionStr = GetWheatRegionTillageProductivitySelectionCombination();
@@ -860,7 +977,11 @@ function OnWheatCalculateBtnClicked() {
 
 
 // #region Barley Sub Functions
-// calculate the rest barley base table values based on existing table values
+/**
+ * Calculates the rest of the barley base table values based on existing table values.
+ * 
+ * @returns {void}
+ */
 function GetBarleyNewDataTables() {
     const barleyLongNoTillDiff = -50;
     const barleyLangdonDiff = -30;
@@ -870,7 +991,11 @@ function GetBarleyNewDataTables() {
     barleyLangdonLongtermnotill = GetNewTable(barleyLangdonConventionaltill, barleyLongNoTillDiff);
 }
 
-// get the string of the combination of barley region and tillage type based on user selection
+/**
+ * Retrieves the string combination of barley region and tillage type based on user selection.
+ * 
+ * @returns {string} The combination of user selections for barley region and tillage.
+ */
 function GetBarleyRegionTillageSelectionCombination() {
     let selections = "";
     selections = $("input[name='barleyRegion']:checked").val() + "_"
@@ -878,7 +1003,12 @@ function GetBarleyRegionTillageSelectionCombination() {
     return selections;
 }
 
-// get the barley base table (N recommendation table before credits) per the user selection
+/**
+ * Retrieves the barley base table (N recommendation table before credits) based on user selection.
+ * 
+ * @param {string} userSelection - The user's selection for barley region and tillage.
+ * @returns {Array} The base table corresponding to the user's selection.
+ */
 function GetBarleyValueTable(userSelection) {
     let tb;
     switch (userSelection) {
@@ -906,7 +1036,12 @@ function GetBarleyValueTable(userSelection) {
     return tb;
 }
 
-// collect barley data for display in PDF
+/**
+ * Collects barley data for display in PDF.
+ * 
+ * @param {number} calculatedResult - The calculated result to be displayed.
+ * @returns {Array} An array containing the collected data for display.
+ */
 function CollectBarleyData(calculatedResult) {
     const value1 = GetSelectedOptionText("barleyPriceSelect");
     const value2 = GetSelectedOptionText("barleyNitrogenPriceSelect");
@@ -919,7 +1054,11 @@ function CollectBarleyData(calculatedResult) {
     return [calculatedResult, value1, value2, value3, value4, value5, value6, value7];
 }
 
-// on barley calculate button clicked, calculate and display the result
+/**
+ * Handles the barley calculate button click event, calculates the result, and displays it.
+ * 
+ * @returns {void}
+ */
 function OnBarleyCalculateBtnClicked() {
     $("#barleyCalculateBtn").click(function () {
         let userSelectionStr = GetBarleyRegionTillageSelectionCombination();
@@ -930,7 +1069,6 @@ function OnBarleyCalculateBtnClicked() {
         sendValues(CollectBarleyData(finalResult), 'htmls/barleyResult.html');
     });
 }
-
 
 // #endregion
 // #endregion
